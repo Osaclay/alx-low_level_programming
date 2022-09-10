@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
-* main - Prints all possible different combinations of three digits, 000 to 999.
+* main - Print different combinations of three digits, 000 to 999.
 * Return: 0
 */
 
