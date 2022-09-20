@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -7,12 +8,13 @@
 
 void puts2(char *str)
 {
-int i;
+int i = 0;
 
-for (i = 0; str[i] != 0; i++)
+while (*(str + i) != '\0')
 {
 if (i % 2 == 0)
-_putchar(str[i]);
+putchar(*(str + i));
+i++;
 }
-_putchar(10);
+putchar(10);
 }
