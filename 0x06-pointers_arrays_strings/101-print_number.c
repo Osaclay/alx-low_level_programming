@@ -1,24 +1,33 @@
 #include "main.h"
 
 /**
-* print_number - prints an integer
-* @n: the integer to evaluate
+* print_number - this function prints an integer.
+* @n: input integer.
+* Return: not applicable.
 */
 
 void print_number(int n)
 {
-if (n / 10)
-{
-print_number(n / 10);
-n %= 10;
+unsigned int m, d, count;
+
 if (n < 0)
-n *= -1;
+{
+_putchar(45);
+m = n * -1;
 }
 else
-if (n < 0)
 {
-_putchar('-');
-n *= -1;
+m = n;
 }
-_putchar(n + '0');
+d = m;
+count = 1;
+while (d > 9)
+{
+d /= 10;
+count *= 10;
+}
+for (; count >= 1; count /= 10)
+{
+_putchar(((m / count) % 10) + 48);
+}
 }
