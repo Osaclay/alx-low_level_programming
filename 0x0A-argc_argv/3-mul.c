@@ -24,3 +24,4 @@ printf("%d\n", rmult);
 }
 
 return (0);
+}
