@@ -1,12 +1,10 @@
 #include "3-calc.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
-* op_add - add two numbers
-* @a: first number
-* @b: second number
-* Return: The sum.
+* op_add - funtion to add
+* @a: input 1
+* @b: input 2
+* Return: sum a and b
 */
 
 int op_add(int a, int b)
@@ -15,10 +13,10 @@ return (a + b);
 }
 
 /**
-* op_sub - Calates the difference between 2 numbers.
-* @a: first number
-* @b: second number
-* Return: The result.
+* op_sub - funtion to subtract
+* @a : input 1
+* @b: input 2
+* Return: difference of a and b
 */
 
 int op_sub(int a, int b)
@@ -27,10 +25,10 @@ return (a - b);
 }
 
 /**
-* op_mul - Caculates the multiplication of two numbers.
-* @a: first number
-* @b: second number
-* Return: The result.
+* op_mul - funtion to multiply
+* @a: input 1
+* @b: input 2
+* Return: product of a and b
 */
 
 int op_mul(int a, int b)
@@ -39,31 +37,25 @@ return (a * b);
 }
 
 /**
-* op_div - Caculates the division of 2 numbers.
-* @a: first number
-* @b: second number
-* Return: The result.
+* op_div - function to divide
+* @a: input 1
+* @b: input 2
+* Return: division of a by b
 */
 
 int op_div(int a, int b)
 {
-if (b != 0)
 return (a / b);
-printf("Error\n");
-exit(100);
 }
 
 /**
-* op_mod - Caculates the module of 2 numbers.
-* @a: first number
-* @b: second number
-* Return: The result.
+* op_mod - function to mod
+* @a: input 1
+* @b: input 2
+* Return: remainder of the division of a
 */
 
 int op_mod(int a, int b)
 {
-if (b != 0)
 return (a % b);
-printf("Error\n");
-exit(100);
 }
