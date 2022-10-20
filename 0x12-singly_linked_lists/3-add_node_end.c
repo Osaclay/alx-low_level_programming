@@ -1,49 +1,65 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
 #include <string.h>
+#include <stdlib.h>
 
 /**
- * add_node_end - function that adds a new node at the end of a list_t list
- * @head: input header pointer
- * @str: Input string value
- * Return: the address of the new element, or NULL if it failed
+ * _strlen - Count the length of a string.
+ * @s: String.
+ * Return: Length.
  */
-
-list_t *add_node_end(list_t **head, const char *str)
+int _strlen(char *s)
 {
-	list_t *node;
-	list_t *tmp;
+	int c;/*Counter of characters*/
 
-	node = malloc(sizeof(list_t));
-	if (node == NULL)
-		return (NULL);
-	node->len = _strlen(str);
-	node->str = strdup(str);
-	node->next = NULL;
-	if (*head == NULL)
-		*head = node;
-	else
-	{
-		tmp = *head;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = node;
-	}
-	return (node);
+	for (c = 0; s[c]; c++)
+		;
+
+	return (c);
 }
 
 /**
- * _strlen - returns length of string
- * @s: character of string
- * Return: length of string
+ * add_node_end - Add a new node at the end of a list_t list.
+ * @head: Pointer to pointer head of the linked list.
+ * @str: String of the node to add.
+ * Return: The address of the new element.
  */
-
-int _strlen(const char *s)
+list_t *add_node_end(list_t **head, const char *str)
 {
-	int i;
+	list_t *new_end = NULL;/*New node at the end*/
+	list_t *end_node = NULL;/*Currently end node*/
 
-	while (s[i] != 0)
-		i++;
-	return (i);
+	if (str == NULL)
+		return (NULL);
+
+	/*Allocate memory for a new node*/
+	new_end = malloc(sizeof(list_t));
+	if (new_end == NULL)
+		return (NULL);
+
+	/*Create a new node*/
+	new_end->str = strdup(str);
+
+	/*If strdup fail -> Free the new node*/
+	if (new_end->str == NULL)
+	{
+		free(new_end);
+		return (NULL);
+	}
+
+	new_end->len = _strlen(new_end->str);
+	new_end->next = NULL;
+
+	/*Found a current last node*/
+	if (*head == NULL)/*If the list are empty*/
+	{
+		*head = new_end;
+		return (new_end);
+	}
+
+	for (end_node = *head; end_node->next != NULL;)
+		end_node = end_node->next;
+
+	end_node->next = new_end;
+
+	return (new_end);
 }
