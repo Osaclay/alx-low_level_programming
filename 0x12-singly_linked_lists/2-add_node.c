@@ -1,53 +1,50 @@
+#include <stddef.h>
 #include "lists.h"
 #include <string.h>
 #include <stdlib.h>
 
 /**
- * _strlen - Count the length of a string.
- * @s: String.
- * Return: Length.
- */
-int _strlen(char *s)
+* _strlen - This function returns the length of a string
+* @s: Variable that contains a character array to be counted
+* Return: Length of the string
+*/
+
+int _strlen(const char *s)
 {
-	int c;/*Counter of characters*/
+int i;
 
-	for (c = 0; s[c]; c++)
-		;
+for (i = 0; s[i] != '\0'; i++)
+continue;
 
-	return (c);
+return (i);
 }
 
 /**
- * add_node - Add a new node at the beginning of a list_t list.
- * @head: Pointer to pointer head of the linked list.
- * @str: String of the node to add.
- * Return: The address of the new element, or NULL if it failed.
- */
+* *add_node - This function adds a new node at the
+* beginning of a linked list_t list
+* @head: The beginning of the linked list
+* @str: The string to duplicate into the new node
+* Return: The address of the new element, of NULL if it failed
+*/
+
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *new = NULL;/*New node*/
 
-	if (str == NULL)
-		return (NULL);
+/* create new list & allocate memory for it */
+list_t *new = (list_t *)malloc(sizeof(list_t));
 
-	/*Allocate memory for a new node*/
-	new = malloc(sizeof(list_t));
-	if (new == NULL)
-		return (NULL);
+if (new == NULL)
+return (NULL);
 
-	/*Create a new node*/
-	new->str = strdup(str);
+/* assign new data */
+new->str = strdup(str);
+new->len = _strlen(str);
 
-	/*If strdup fail -> Free the new node*/
-	if (new->str == NULL)
-	{
-		free(new);
-		return (NULL);
-	}
+/* assign 'head' as next element of new list */
+new->next = (*head);
 
-	new->len = _strlen(new->str);
-	new->next = *head;
-	*head = new;
+/* move head to point to new list */
+(*head) = new;
 
-	return (new);
-}
+return (new);
+
