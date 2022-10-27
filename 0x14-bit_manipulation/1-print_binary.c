@@ -1,49 +1,31 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "main.h"
 
 /**
- * _pow_recursion - function that returns the value of x
- * raised to the power of y
- * @x: base number
- * @y: pow number
- * Return: int
- */
+* prt_binary_rec - Prints the binary representation of a number.
+* @n: Number to print.
+*/
 
-int _pow_recursion(int x, int y)
+void prt_binary_rec(unsigned long int n)
 {
-if (y < 0)
-return (-1);
-if (y == 0)
-return (1);
-return (x * _pow_recursion(x, y - 1));
+short int bn; /*Binary number (bit)*/
+
+if (n != 0)
+{
+/*Enter the function by removing the last bit*/
+prt_binary_rec(n >> 1);
+bn = n & 1;
+_putchar(bn + '0');
+}
 }
 
 /**
- * print_binary - function that prints the binary representation of a number
- * @n: decimal number
- * Return: nothing
- */
-
+* print_binary - Prints the binary representation of a number.
+* @n: Numbert to print.
+*/
 void print_binary(unsigned long int n)
 {
-unsigned int res_pow = 0;
-int exp = 10;
-int flag = 0;
-
-if (n == 0)
+if (n != 0)
+prt_binary_rec(n);
+else
 _putchar('0');
-while (exp >= 0)
-{
-res_pow = _pow_recursion(2, exp);
-if (n >= res_pow)
-{
-_putchar('1');
-n -= res_pow;
-flag = 1;
-}
-else if (n < res_pow && flag == 1)
-_putchar('0');
-exp--;
-}
 }
