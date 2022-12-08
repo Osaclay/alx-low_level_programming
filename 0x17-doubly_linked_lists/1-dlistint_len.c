@@ -3,8 +3,7 @@
 #include "lists.h"
 
 /**
- * dlistint_len - a function that returns 
- * the number of elements in a linked
+ * dlistint_len - function that returns the number of elements in a linked
  * list_t list
  * @h: h pointer
  * Return: number of elements

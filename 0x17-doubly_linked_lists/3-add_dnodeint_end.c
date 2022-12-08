@@ -4,11 +4,10 @@
 #include "lists.h"
 
 /**
- * add_dnodeint_end - a function that adds a new node 
- * at the end of a list_t list
+ * add_dnodeint_end - function that adds a new node at the end of a list_t list
  * @head: input header pointer
  * @n: input int value
- * Return: the address of the new element, or NULL if failed
+ * Return: the address of the new element, or NULL if it failed
  */
 
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
