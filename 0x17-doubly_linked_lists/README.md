@@ -1,1 +1,1 @@
-Doubly linked lists, C alx Project
+Doubly linked lists, alx C project
