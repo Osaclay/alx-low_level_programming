@@ -1,18 +1,22 @@
 #include "main.h"
 
 /**
-* _strcpy - copy the string in source to dest
-* @dest: destiny char
-* @src: source char
-* Return: copy char in destiny
-*/
-
+  * _strcpy - Copy a string
+  * @dest: Destination value
+  * @src: Source value
+  *
+  * Return: the pointer to dest
+  */
 char *_strcpy(char *dest, char *src)
 {
-int index;
+	int i;
 
-for (index = 0; src[index] != '\0'; index++)
-dest[index] = src[index];
-dest[index] = '\0';
-return (dest);
+	for (i = 0; src[i] != '\0'; i++)
+	{
+		dest[i] = src[i];
+	}
+
+	dest[i++] = '\0';
+
+	return (dest);
 }

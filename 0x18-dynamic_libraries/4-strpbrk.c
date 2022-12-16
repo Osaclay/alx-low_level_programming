@@ -1,25 +1,24 @@
-#include "main.h"
-
 /**
-* _strpbrk - Search a string for any of a set of bytes.
-* @s: String.
-* @accept: Characters to accept.
-* Return: A pointer to the byte in s that
-* matches one of the bytes in accept,
-* or NULL if no such byte is found
+* _strpbrk - searches a string for any of a set of bytes.
+* @s: string
+* @accept: string to be located
+*
+* Return: char pointer
 */
-
 char *_strpbrk(char *s, char *accept)
 {
-int l, i;
+	unsigned int i, j;
 
-for (l = 0; s[l]; l++)
-{
-for (i = 0; accept[i]; i++)
-{
-if (s[l] == accept[i])
-return (&s[l]);
+	for (i = 0; *(s + i) != '\0'; i++)
+	{
+		for (j = 0; *(accept + j) != '\0'; j++)
+		{
+		if (*(s + i) == *(accept + j))
+			return (s + i);
+		}
+	}
+
+	return ('\0');
 }
-}
-return (0);
-}
+Footer
+© 2022 GitHub, Inc.
