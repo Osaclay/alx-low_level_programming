@@ -1,6 +1,6 @@
 #include "search_algos.h"
 
-int recurse_helper(int *arr, size_t size, int val, size_t index);
+int recurse_helper(int *arr, size_t size, int val, size_t x);
 
 /**
   * linear_search - Searches for a value in an array
@@ -31,15 +31,15 @@ int linear_search(int *array, size_t size, int value)
  *
  * Return: index of value or -1 if value not found
  */
-int recurse_helper(int *arr, size_t size, int val, size_t index)
+int recurse_helper(int *arr, size_t size, int val, size_t x)
 {
-	if (index == size)
+	if (x == size)
 		return (-1);
 
-	printf("Value checked array[%lu] = [%d]\n", index, arr[index]);
+	printf("Value checked array[%lu] = [%d]\n", x, arr[x]);
 
-	if (arr[index] == val)
-		return (index);
+	if (arr[x] == val)
+		return (x);
 
-	return (recurse_helper(arr, size, val, index + 1));
+	return (recurse_helper(arr, size, val, x + 1));
 }
