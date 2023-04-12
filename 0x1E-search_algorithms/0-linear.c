@@ -1,26 +1,45 @@
 #include "search_algos.h"
 
+int recurse_helper(int *arr, size_t size, int val, size_t index);
+
 /**
- * linear_search - searches for a value in an array of
- * integers using the Linear search algorithm
- *
- * @array: input array
- * @size: size of the array
- * @value: value to search in
- * Return: Always EXIT_SUCCESS
- */
+  * linear_search - Searches for a value in an array
+  *                 of integers using linear search.
+  * @array: A pointer to the first element of the array to search.
+  * @size: The number of elements in the array.
+  * @value: The value to search for.
+  *
+  * Return: If the value is not present or the array is NULL, -1.
+  *         Otherwise, the first index where the value is located.
+  *
+  * Description: Prints a value every time it is compared in the array.
+  */
 int linear_search(int *array, size_t size, int value)
 {
-	int x;
 
 	if (array == NULL)
 		return (-1);
 
-	for (x = 0; x < (int)size; x++)
-	{
-		printf("Value checked array[%u] = [%d]\n", x, array[x]);
-		if (value == array[x])
-			return (x);
-	}
-	return (-1);
+	return (recurse_helper(array, size, value, 0));
+}
+/**
+ * recurse_helper - recursive implementation of linear search
+ * @arr: pointer to array of ints
+ * @size: size of array
+ * @val: value to locate
+ * @idx: current index
+ *
+ * Return: index of value or -1 if value not found
+ */
+int recurse_helper(int *arr, size_t size, int val, size_t index)
+{
+	if (index == size)
+		return (-1);
+
+	printf("Value checked array[%lu] = [%d]\n", index, arr[index]);
+
+	if (arr[index] == val)
+		return (index);
+
+	return (recurse_helper(arr, size, val, index + 1));
 }
